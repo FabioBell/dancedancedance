@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+<p>
+  <strong>Name:</strong>
+  <%= @song.name %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @song.duration %>
+</p>
+
+<p>
+  <strong>Genre:</strong>
+  <%= @song.genre %>
+</p>
+
+<%= link_to 'Edit', edit_song_path(@song) %> |
+<%= link_to 'Back', songs_path %>
+<%= link_to 'Destroy', @song, method: :destroy, data: { confirm: 'Are you sure?' } %>
+</div>

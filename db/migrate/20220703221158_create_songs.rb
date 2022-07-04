@@ -4,7 +4,6 @@ class CreateSongs < ActiveRecord::Migration
       t.string :name
       t.integer :duration
       t.string :genre
-
       t.timestamps
     end
   end

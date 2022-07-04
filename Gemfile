@@ -39,3 +39,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'debugger', group: [:development, :test]
 
 gem 'minitest', '5.8.4'
+gem "faraday", '0.17.4'
+gem 'sorcery', "0.9.0"
+gem "multipart-post", '2.1.1'
+gem "jwt", "2.3.0"

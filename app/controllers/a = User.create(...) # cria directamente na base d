@@ -1,0 +1,10 @@
+a = User.create(...) # cria directamente na base de dados
+a.errors.messages # mostra a lista de erros
+a.persisted? # da true - retorna true/false se o Objecto já estiver na DB
+
+b = User.new(....) # criar um Objecto em ruby
+b.valid?
+b.errors.messages
+b.persisted? # da false 
+b.save # Guarda p Objecto ruby na DB
+

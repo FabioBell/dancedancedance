@@ -43,3 +43,7 @@ gem "faraday", '0.17.4'
 gem 'sorcery', "0.9.0"
 gem "multipart-post", '2.1.1'
 gem "jwt", "2.3.0"
+
+group :development do
+	gem 'byebug', "10.0.0"
+end

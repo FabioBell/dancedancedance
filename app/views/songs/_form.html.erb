@@ -19,14 +19,16 @@
     <%= f.label :duration %><br>
     <%= f.number_field :duration %>
   </div>
-  <div class="field">
-    <%= f.label :genre %><br>
-    <%= f.text_field :genre %>
+    <div class="field">
+    <%= f.label :genre_id %><br>
+    <%= f.number_field :genre_id %>
+
+    <%= f.select :leagues_id, options_for_select( @leagues.map { |league| 
+    [ league.name, league.id ]}), prompt: true %>
+</select>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id, value:current_user.id%>
-  </div>
+    
+  
   <div class="actions">
     <%= f.submit %>
   </div>

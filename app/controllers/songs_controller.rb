@@ -1,6 +1,7 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_login
+  before_action :correct_user, only:[:edit, :update, :destroy]
   # GET /songs
   # GET /songs.json
   def index
@@ -14,7 +15,8 @@ class SongsController < ApplicationController
 
   # GET /songs/new
   def new
-    @song = Song.new
+    #@song = Song.new
+    @song = current_user.songs.build
   end
 
   # GET /songs/1/edit
@@ -24,8 +26,8 @@ class SongsController < ApplicationController
   # POST /songs
   # POST /songs.json
   def create
-    @song = Song.new(song_params)
-
+    #@song = Song.new(song_params)
+    @song = current_user.songs.build(song_params)
     respond_to do |format|
       if @song.save
         format.html { redirect_to @song, notice: 'Song was successfully created.' }
@@ -61,6 +63,12 @@ class SongsController < ApplicationController
     end
   end
 
+  def correct_user
+    @song = current_user.songs.find_by(id: params[:id])
+    redirect_to songs_path, notice:"Not Authorized" if @song.nil?
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_song
@@ -69,6 +77,6 @@ class SongsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
-      params.require(:song).permit(:name, :duration, :genre)
+      params.require(:song).permit(:name, :duration, :genre, :user_id)
     end
 end

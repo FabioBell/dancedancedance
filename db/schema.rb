@@ -22,13 +22,18 @@ ActiveRecord::Schema.define(version: 20220704092057) do
     t.datetime "updated_at"
   end
 
-  create_table "authentications", force: true do |t|
-    t.integer  "user_id",    null: false
-    t.string   "provider",   null: false
-    t.string   "uid",        null: false
+  create_table "friends", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "twitter"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "friends", ["user_id"], name: "index_friends_on_user_id", using: :btree
 
   create_table "songs", force: true do |t|
     t.string   "name"

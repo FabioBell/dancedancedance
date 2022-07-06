@@ -1,9 +1,10 @@
 class UserSessionsController < ApplicationController
+  
   def create
     login_params = params[:login]
 
     @user = login(login_params[:email],login_params[:password])
-    debugger
+    
     if @user
       redirect_to(songs_path, notice: 'Login successful')
     else
@@ -14,6 +15,6 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to(:users, notice: 'Logged out!')
+    redirect_to(home_index_path, notice: 'Logged out!')
   end
 end

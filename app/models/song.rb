@@ -4,5 +4,4 @@ class Song < ActiveRecord::Base
 
 	validates :name, :duration, :genre_id, presence: true
 
-
 end

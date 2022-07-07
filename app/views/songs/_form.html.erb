@@ -23,9 +23,6 @@
     <%= f.label :genre_id %><br>
     <%= f.number_field :genre_id %>
 
-    <%= f.select :leagues_id, options_for_select( @leagues.map { |league| 
-    [ league.name, league.id ]}), prompt: true %>
-</select>
   </div>
     
   

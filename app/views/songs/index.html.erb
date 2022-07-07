@@ -18,8 +18,7 @@
         <tr>
             <td><%= song.name %></td>
             <td><%= song.duration %></td>
-            <td><%= song.genre %></td>
-            <td><%= song.user_id %></td>
+            <td><%= SongGenres.find_by(id:song.genre_id ).try(:genre) %></td>
             <td><%= link_to 'Show', song %></td>
             <td><%= link_to 'Edit', edit_song_path(song) %></td>
             <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -31,5 +30,6 @@
 
   <br>
 
-  <%= link_to 'New Song', new_song_path %>
+  <%= link_to 'New Song', new_song_path, class:"btn btn-default" %>
 </div>
+

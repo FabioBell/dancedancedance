@@ -5,9 +5,9 @@ class CreateSongGenres < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_column :songs, :genre_id, :integer
-    remove_column :songs, :genre
-    add_index :songs, :genre_id
+    add_column :songs, :song_genre_id, :integer
+    remove_column :songs, :genre, :string
+    add_index :songs, :song_genre_id
 
   end
 end

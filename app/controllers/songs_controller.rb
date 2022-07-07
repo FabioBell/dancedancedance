@@ -4,7 +4,7 @@ class SongsController < ApplicationController
   before_action :require_owner, only:[:edit, :update, :destroy]
   
   def index
-    @songs = Song.all
+    @songs = current_user.songs.includes :song_genre
   end
 
   def show
@@ -50,6 +50,6 @@ class SongsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
-      params.require(:song).permit(:name, :duration, :genre_id, :user_id)
+      params.require(:song).permit(:name, :duration, :song_genre_id)
     end
 end

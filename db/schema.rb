@@ -22,18 +22,13 @@ ActiveRecord::Schema.define(version: 20220706085001) do
     t.datetime "updated_at"
   end
 
-  create_table "friends", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "phone"
-    t.string   "twitter"
+  create_table "authentications", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.string   "provider",   null: false
+    t.string   "uid",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
-
-  add_index "friends", ["user_id"], name: "index_friends_on_user_id", using: :btree
 
   create_table "song_genres", force: true do |t|
     t.string   "genre"
@@ -47,10 +42,10 @@ ActiveRecord::Schema.define(version: 20220706085001) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "genre_id"
+    t.integer  "song_genre_id"
   end
 
-  add_index "songs", ["genre_id"], name: "index_songs_on_genre_id", using: :btree
+  add_index "songs", ["song_genre_id"], name: "index_songs_on_song_genre_id", using: :btree
   add_index "songs", ["user_id"], name: "index_songs_on_user_id", using: :btree
 
   create_table "users", force: true do |t|

@@ -5,7 +5,9 @@ class UserSessionsController < ApplicationController
 
     @user = login(login_params[:email],login_params[:password])
     
-    if @user
+    if @user.is_a? Client
+      redirect_to(songs_path, notice: 'Login successful')
+    elsif @user.is_a? Admin
       redirect_to(songs_path, notice: 'Login successful')
     else
       flash.now[:alert] = 'Login failed'

@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   def require_login
     if current_user.blank?
       flash[:alert] = "Faça Login!!!"
-      flash[:notice] = "Faça Login!!!"
       redirect_to login_path
     end  
   end

@@ -2,7 +2,7 @@ class UserSessionsController < ApplicationController
   
   def create
     login_params = params[:login]
-
+    
     @user = login(login_params[:email],login_params[:password])
     
     if @user.is_a? Client

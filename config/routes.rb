@@ -1,26 +1,18 @@
 Rails.application.routes.draw do
-  get 'user_sessions/new'
-
-  get 'user_sessions/create'
-
-  get 'user_sessions/destroy'
+  root :to => 'users#index'
 
   get 'home/index'
 
   resources :songs
-
-  #root "home#index"
-
-  root :to => 'users#index'
   resources :users
 
-  get 'login' => 'user_sessions#new', :as => :login
+  get 'login' => 'user_sessions#new', as: :login
   post 'login' => "user_sessions#create"
-  post 'logout' => 'user_sessions#destroy', :as => :logout
+  post 'logout' => 'user_sessions#destroy', as: :logout
 
 
   namespace :admin do
-    get :index => "admins#index"
+    get "index" => "base#index", as: :index
   end 
 
   # The priority is based upon order of creation: first created -> highest priority.

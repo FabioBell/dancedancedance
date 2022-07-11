@@ -1,9 +1,10 @@
 class Admin::BaseController < ApplicationController
+	layout "admin_application"
 	before_action :require_admin
 
 
 	def index
-		
+		render "home/admin_index" 
 	end
 
 	private

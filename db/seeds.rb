@@ -12,6 +12,7 @@
 
 	user1 = User.create(email:"Fab", password:"123456", password_confirmation:"123456")
 	user2 = User.create(email:"Fab2", password:"123456", password_confirmation:"123456")
+	user3 = Admin.create(email:"admin", password:"123456", password_confirmation:"123456")
 	sg1 = SongGenre.create(genre:"Rock")
 	sg2 = SongGenre.create(genre:"Pop")
 	sg3 = SongGenre.create(genre:"Classic")

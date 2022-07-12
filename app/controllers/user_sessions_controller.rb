@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
     if @user.is_a? Client
       redirect_to(songs_path, notice: 'Login successful')
     elsif @user.is_a? Admin
-      redirect_to(admin_index_path, notice: 'Login successful')
+      redirect_to(root_path, notice: "Login successful as")
     else
       flash.now[:alert] = 'Login failed'
       render action: 'new'

@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   layout "admin_application"
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+
 
 	def index
 		#@users = User.all
-    @users = User.where(type: "Client")
+    @users = Client.where(type: "Client")
     
 	end
 
@@ -11,11 +13,18 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    @user = Client.new
+    @user_path = users_path
+    @user_method = :post
   end
-
+  
+  def edit
+    @user_path = user_path(@user.id)
+    @user_method = :patch
+  end
+  
   def create
-    @user = Client.new(user_params) #==========> ver se posso deixar Client
+    @user = Client.new(user_params) 
     if @user.save
       redirect_to users_path, notice: 'User was successfully created.' 
     else
@@ -25,16 +34,23 @@ class UsersController < ApplicationController
   
   def destroy
     #@user.destroy
-    #======> rever isto amanha
     Client.destroy(params[:id])
     redirect_to users_path, notice: 'User was successfully destroyed.'
   end
 
+  def update
+    @user.update(user_params)
+    redirect_to users_path, notice: 'User was successfully updated.'
+  end
 
   private
+     # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = Client.find(params[:id])
+  end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :type, :id)
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 
 

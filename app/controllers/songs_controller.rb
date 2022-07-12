@@ -12,7 +12,7 @@ class SongsController < ApplicationController
 
   def new
     #@song = Song.new
-    @song = current_user.songs.build
+    @song = Song.new
   end
 
   def edit
@@ -29,6 +29,8 @@ class SongsController < ApplicationController
   end
 
   def update
+    @song.update(song_params)
+    redirect_to songs_path, notice: 'Song was successfully updated.'
   end
 
   def destroy
